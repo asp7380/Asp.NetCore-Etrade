@@ -1,0 +1,55 @@
+﻿@model Etrade.Northwind.MvcWebUI.Models.CartListViewModel
+@{
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+
+<h2>Sepetiniz</h2>
+<table class="table">
+    <tr>
+        <td>Ürün adı</td>
+        <td>Birim fiyatı</td>
+        <td>Stok adedi</td>
+        <td>Adet</td>
+        <td></td>
+    </tr>
+    @foreach (var item in Model.Cart.CartLines)
+    {
+        <tr>
+            <td>@item.Product.ProductName</td>
+            <td>@item.Product.UnitPrice</td>
+            <td>@item.Product.UnitsInStock</td>
+            <td>@item.Quantity</td>
+            <td class="text-right"><a class="btn btn-xs btn-danger" asp-controller="Cart" asp-action="Remove" asp-route-productId="@item.Product.ProductId"><span><i class="far fa-trash-alt"></i></span> Sepetten çıkart</a></td>
+        </tr>
+    }
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+            <h3>Tutar</h3>
+        </td>
+        <td class="text-right">
+            <h3>
+                <strong>@Model.Cart.Total </strong><span><i class="fas fa-lira-sign"></i></span>
+            </h3>
+        </td>
+    </tr>
+    <tr>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td>
+            <a asp-controller="Product" asp-action="Index" class="btn btn-xs btn-light">
+                <span><i class="fas fa-shopping-cart"></i></span> Alışverişe devam et
+            </a>
+        </td>
+        <td class="text-right">
+            <a asp-controller="Cart" asp-action="Complete" class="btn btn-xs btn-success">
+                <span><i class="fas fa-cash-register"></i></span> Ödeme sayfasına git
+            </a>
+        </td>
+    </tr>
+</table>
+

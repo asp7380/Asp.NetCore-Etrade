@@ -1,0 +1,21 @@
+﻿@model Etrade.Northwind.MvcWebUI.CartSummaryViewModel
+
+<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+
+    @foreach (var item in Model.Cart.CartLines)
+    {
+        <li>
+            <a>@item.Product.ProductName <span class="badge badge-secondary">@item.Quantity</span></a>
+        </li>
+    }
+    
+    <li role="separator" class="divider"></li>
+    <li>
+        <a><span><i class="fas fa-shopping-cart"></i></span> @Model.Cart.Total</a>
+    </li>
+    <li role="separator" class="divider"></li>
+    <li>
+        <a asp-controller="Cart" asp-action="List">Sepete git</a>
+    </li>
+
+</ul>

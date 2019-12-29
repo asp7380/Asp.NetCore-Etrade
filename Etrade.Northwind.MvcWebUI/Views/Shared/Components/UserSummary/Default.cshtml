@@ -1,0 +1,9 @@
+﻿@model Etrade.Northwind.MvcWebUI.Models.UserDetailsViewModel
+@if (!String.IsNullOrEmpty(@Model.UserName))
+{
+    <a>Hoşgeldiniz @Model.UserName</a>
+    <a asp-controller="Account" asp-action="LogOut"> Çıkış yap</a>
+}
+
+
+
